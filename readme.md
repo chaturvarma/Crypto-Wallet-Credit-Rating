@@ -1,14 +1,12 @@
 # Crypto Wallet Credit Rating
 
-## Project Overview
-
 This project aims to score crypto wallets based on their on-chain activity and credit behavior using transaction data from the Compound V2 protocol. By applying data extraction, feature engineering, and clustering techniques, we assign each wallet a credit score ranging from 0 to 100, which can serve as a proxy for trustworthiness and financial behavior in decentralized finance (DeFi)
 
 ## Dataset
 
 The dataset consists of Compound V2 transaction logs in JSON format. Each record corresponds to a wallet interacting with the protocol through actions such as deposit, borrow, repay, withdraw, and liquidation
 
-## 🔧 Data Extraction
+## Data Extraction
 
 Python function (`extract_data`) was used to extract the following fields from each JSON:
 - `account_id`: Wallet address
@@ -22,7 +20,7 @@ Python function (`extract_data`) was used to extract the following fields from e
   - `3`: Repay
   - `4`: Liquidate
 
-## 🧠 Feature Engineering
+## Feature Engineering
 
 From the raw transaction logs, several wallet-level features were engineered that reflect financial behavior:
 
@@ -41,7 +39,7 @@ From the raw transaction logs, several wallet-level features were engineered tha
 | `has_borrow_no_repay` | Wallet borrowed but never repaid (flag) |
 | `has_withdraw_no_deposit` | Wallet withdrew without depositing (flag) |
 
-### Clustering
+## Clustering
 
 Instead of using a hand-crafted score metric directly, we apply KMeans clustering on selected key behavioral features:
 
